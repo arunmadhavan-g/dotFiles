@@ -1,0 +1,88 @@
+alias reload='source ~/.zshrc' 
+alias ze='vi ~/.zshrc'
+alias dl='axel -a -n 10 '
+alias dlc='axel -a -n 10 `pbpaste`'
+alias download='aria2c'
+alias vim='mvim -v'
+alias mci='mvn clean install'
+alias b='mvn clean instdall'
+alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+alias rmdir='rm -rf'
+alias pi='pod install'
+alias cls='clear'
+alias brake='bundle exec rake'
+alias cart='carthage'
+alias cartu='cart update'
+alias n=npm
+alias ni='npm i'
+alias ns='npm start'
+alias nr='npm run watch'
+alias ut='npm run test:unit'
+alias it='NODE_ENV=test npm run test:integration'
+alias mtest='meteor test --once --driver-package dispatch:mocha --port 3100'
+alias dm=docker-machine
+alias notify='terminal-notifier -message "Done"'
+alias bi='brew install'
+alias bu='brew update'
+alias ya='yarn add'
+alias yr='yarn remove'
+alias yt='yarn test'
+alias y='yarn'
+alias ys='yarn start'
+alias yb='yarn build'
+alias yd='yarn dev'
+alias ycc'yarn code_check'
+alias yg='rm -rf dist && yarn generate'
+alias apt-get=brew
+alias yum=brew
+alias ber='bundle exec rails'
+alias be= 'bundle exec'
+alias rs60= 'rails s -p 3060'
+alias bert='RAILS_ENV=test bundle exec rake test'
+alias rrefresh='rm bin/* && rake app:update:bin'
+alias bi='brew install'
+alias kims='pskill mock-server'
+alias yms='yarn mock-server'
+alias ycc='yarn code_check'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+function showip() {
+    ifconfig | grep 'inet ' | grep -v 'inet 127.0.0.1' | head -1 | cut -d " " -f2
+}
+
+function pskill() {
+    kill `ps -ef | grep -i $1 | grep -v grep | awk '{print $2}'`
+}
+
+function sukill() {
+    ps aux | grep $1 | grep -v grep | awk '{print $2}' | xargs sudo kill -9
+}
+
+function youtube-dl-mp3() {
+    youtube-dl --extract-audio --audio-format mp3 $1
+}
+
+function check-internet() {
+    while :
+    do
+    ping -c 1 -q 8.8.8.8 > /dev/null 2>&1
+    if [[ $? -eq 0 ]]
+    then
+        say 'Internet is working'
+        break
+    fi
+    sleep 1
+    done
+}
+alias sl=ls
+
+function loadenv() {
+  nvm use 6.9.1 && source ~/.loadenv
+}
+
+function copy() {
+    cat ~/repos/dissertation/step/$1.txt | pbcopy
+}
+
+function whouses() {
+    lsof -i ":$1"
+}
